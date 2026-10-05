@@ -401,7 +401,7 @@ function fitZoom(){
   const bw=turn?H:W,bh=turn?W:H,sc=Math.min(bw/iw,bh/ih);
   im.style.width=iw*sc+'px';im.style.height=ih*sc+'px';im.style.setProperty('--rot',turn?'90deg':'0deg');
   const vw=turn?ih*sc:iw*sc,vh=turn?iw*sc:ih*sc,c=$('zoom-close');
-  c.style.right=((W-vw)/2+16)+'px';c.style.top=Math.max((H-vh)/2+4,4)+'px';
+  c.style.right=((W-vw)/2+16)+'px';if(turn){c.style.top='auto';c.style.bottom=Math.max((H-vh)/2+4,4)+'px'}else{c.style.bottom='auto';c.style.top=Math.max((H-vh)/2+4,4)+'px'}
 }
 $('zoom-close').addEventListener('click',e=>{e.stopPropagation();closeZoom()});
 document.addEventListener('keydown',e=>{if(e.key==='Escape')closeZoom();if(e.key==='ArrowRight'||e.key===' ')next();if(e.key==='ArrowLeft')prev()});
